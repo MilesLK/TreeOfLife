@@ -2,16 +2,27 @@
 
 {% block title %}Hello HomeController!{% endblock %}
 
+{% block stylesheets %}
+<style>
+    .Home {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .homeMess {
+        margin: 50% 0%
+    }
+</style>
+{% endblock %}
+
 {% block body %}
-
-<button class="button">
-<a href="{{ path('app_my_fruits') }}">Mes fruits</a>
-</button>
-
-<button class="button">
-<a href="{{ path('add_fruit') }}">Ajouter un fruit</a>
-</button>
-
+<div class="Home">
 {% include 'components/navbar.html.twig' %}
+
+<div class="homeMess">
+<h1> Bienvenue dans le chusu note </h1>
+</div>
+
+</div>
 
 {% endblock %}

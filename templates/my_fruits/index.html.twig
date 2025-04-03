@@ -3,5 +3,19 @@
 {% block title %}Hello MyFruitsController!{% endblock %}
 
 {% block body %}
+{% for element in elements %}
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{element.name}}</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">{{element.occupation}}</h6>
+    <p class="card-text">{{element.age}}</p>
+    <a href="#" class="card-link">{{element.evenement}}</a>
+    <a href="#" class="card-link">{{element.date|date('d/m/Y')}}</a>
+  </div>
+</div>
+    {% else %}
+        <li>Aucun élément trouvé.</li>
+{% endfor %}
+
 
 {% endblock %}

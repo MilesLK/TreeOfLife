@@ -2,6 +2,7 @@
 
 {% block title %}Calendrier des évènements{% endblock %}
 
+
 {% block stylesheets %}
 <style>
 body {
@@ -26,12 +27,13 @@ body {
 </style>
 {% endblock %}
 
+
 {% block body %}
 {% include 'components/navbar.html.twig' %}
 
-<div id="calendrier">
-</div>
+<div id="calendrier"></div>
 {% endblock %}
+
 
 {# Initialisation du calendrier dans la vue #}
 {% block javascripts %}
@@ -45,7 +47,7 @@ body {
         headerToolbar: {
             start: 'prev',
             center: 'title',
-            end: 'next,dayGridMonth,timeGridWeek',
+            end: 'next,dayGridMonth,timeGridWeek'
         }
     })
 

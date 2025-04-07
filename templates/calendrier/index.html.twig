@@ -24,16 +24,17 @@ body {
     color: black;
     text-decoration: none
 }
+
+.fc-event-title, .fc-event-time {
+    color: black !important;
+}
 </style>
 {% endblock %}
 
-
 {% block body %}
-{% include 'components/navbar.html.twig' %}
-
 <div id="calendrier"></div>
-{% endblock %}
 
+{% endblock %}
 
 {# Initialisation du calendrier dans la vue #}
 {% block javascripts %}
@@ -48,7 +49,10 @@ body {
             start: 'prev',
             center: 'title',
             end: 'next,dayGridMonth,timeGridWeek'
-        }
+        },
+        events: {{data | raw}},
+        eventTextColor: 'black', // ✅ texte noir pour tous les events
+        editable: true,
     })
 
     calendar.render();

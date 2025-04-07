@@ -13,7 +13,9 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+{% include 'components/navbar.html.twig' %}
+{% block body %}{% endblock %}
+
             <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
     </body>
 </html>

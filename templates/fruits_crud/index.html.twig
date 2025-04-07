@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fruits index{% endblock %}
+
+{% block body %}
+    <h1>Fruits index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Occupation</th>
+                <th>Age</th>
+                <th>Evenement</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fruit in fruits %}
+            <tr>
+                <td>{{ fruit.id }}</td>
+                <td>{{ fruit.Name }}</td>
+                <td>{{ fruit.Occupation }}</td>
+                <td>{{ fruit.Age }}</td>
+                <td>{{ fruit.Evenement }}</td>
+                <td>{{ fruit.Date ? fruit.Date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_fruits_c_r_u_d_show', {'id': fruit.id}) }}">show</a>
+                    <a href="{{ path('app_fruits_c_r_u_d_edit', {'id': fruit.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fruits_c_r_u_d_new') }}">Create new</a>
+{% endblock %}

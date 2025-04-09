@@ -20,7 +20,7 @@ final class CalendrierController extends AbstractController{
                 'id' => $events->getId(),
                 'date' => $events->getDate()->format('Y-m-d H:i:s'),
                 'title' => $events->getName(),
-                'extendProps' => [
+                'extendedProps' => [
                     'evenement' => $events->getEvenement(),
                     'age' => $events->getAge(),
                 ]

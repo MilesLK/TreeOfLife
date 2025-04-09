@@ -51,10 +51,25 @@ body {
             end: 'next,dayGridMonth,timeGridWeek'
         },
         events: {{data | raw}},
-        eventTextColor: 'black', // ✅ texte noir pour tous les events
+        eventTextColor: 'black',
         editable: true,
+        eventResizableFromStart: true
     })
 
+    calendar.on('eventChange', (e) => {
+        let url = `/api/${e.event.id}/edit`
+        let donnees = {
+            "title": e.event.name,
+            "date": e.event.date,
+            "evenement": e.event.extendedProps.evenement,
+            "age": e.event.extendedProps.age,            
+        }
+
+        let xhr = new XMLHttpRequest();
+        
+        xhr.open("PUT", url)
+        xhr.send(JSON.stringify(donnees))
+    })
     calendar.render();
  }
 </script>

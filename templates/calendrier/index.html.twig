@@ -58,17 +58,33 @@ body {
 
     calendar.on('eventChange', (e) => {
         let url = `/api/${e.event.id}/edit`
-        let donnees = {
-            "title": e.event.name,
-            "date": e.event.date,
+        let dodo = {
+            "name": e.event.title,
+            "date": e.event.startStr,
+            "occupation": e.event.extendedProps.occupation,
             "evenement": e.event.extendedProps.evenement,
-            "age": e.event.extendedProps.age,            
+            "age": e.event.extendedProps.age,
         }
 
-        let xhr = new XMLHttpRequest();
+        console.log(e);
         
-        xhr.open("PUT", url)
-        xhr.send(JSON.stringify(donnees))
+        let xhr = new XMLHttpRequest();
+
+        // Étape 1 : Ouvrir la requête (OBLIGATOIRE AVANT le send)
+        xhr.open("PUT", "https://127.0.0.1:8000/api/6/edit", true);
+
+        // Étape 2 : configurer les headers
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        // Étape 3 : définir un callback si nécessaire
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                console.log("Statut :", xhr.status);
+                console.log("Réponse :", xhr.responseText);
+                }
+                };
+        console.log("Données envoyées:", JSON.stringify(dodo));
+        xhr.send(JSON.stringify(dodo));
     })
     calendar.render();
  }

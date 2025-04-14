@@ -23,6 +23,7 @@ final class CalendrierController extends AbstractController{
                 'extendedProps' => [
                     'evenement' => $events->getEvenement(),
                     'age' => $events->getAge(),
+                    'occupation' => $events->getOccupation(),
                 ]
             ];
         }
